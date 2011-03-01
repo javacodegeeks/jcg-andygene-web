@@ -1,0 +1,8 @@
+#summary This page is the installation instruction.
+
+= Introduction =
+
+For more info about the archetype go to <a href="http://www.javacodegeeks.com">Java Code Geeks</a>
+
+
+= Details =
