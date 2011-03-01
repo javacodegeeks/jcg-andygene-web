@@ -1,0 +1,41 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- HTTP security configurations -->
+    <http auto-config="true" use-expressions="true">
+    	<form-login login-processing-url="/web/resources/j_spring_security_check" login-page="/web/login" authentication-failure-url="/web/login?login_error=t" default-target-url="/web/"/>
+        <logout logout-url="/web/resources/j_spring_security_logout" logout-success-url="/web/login"/>
+        
+        <!-- Configure these elements to secure URIs in your application -->
+        <intercept-url pattern="/reports/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/activiti/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/jms/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/drools/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/myentity/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/webservices/**" access="permitAll" />
+        <intercept-url pattern="/**" access="permitAll"/>
+        
+    </http>
+
+	<!-- Configure Authentication mechanism -->
+    <authentication-manager alias="authenticationManager">
+    	<authentication-provider>
+	    	<password-encoder hash="sha-256"/>
+	        <user-service>
+	            <user name="jcg" password="1bd240afa5621a78da8220e277a17aac065403498d1efbfc8fe532d64fbdf2cf" authorities="ROLE_ADMIN"/>
+		        <user name="user" password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8f" authorities="ROLE_USER"/>
+		    </user-service>
+    	</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

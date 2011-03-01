@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="body" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:form="http://www.springframework.org/tags/form" version="2.0" dojoType="dijit.layout.ContentPane" region="center" splitter="true">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  
+    
+    	<p><spring:message code="myentity_list_message" /></p>
+ 		
+ 		<table >
+    <thead>
+        <tr>
+            <th width="50px" align="left">
+                <spring:message code="myentity_show_id_message" />
+            </th>
+            <th width="200px" align="left">
+                <spring:message code="myentity_show_name_message" />
+            </th>
+            <th width="100px" align="left">
+                <spring:message code="myentity_delete_message" />
+            </th>
+            <th width="100px" align="left">
+                <spring:message code="myentity_update_message" />
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    	<c:forEach items="${myentitys}" var="myentity">
+    	<tr>
+    		<td align="left" width="50px" >
+      			<c:out value="${myentity.id}" escapeXml="true"/>
+    		</td>
+    		<td align="left" width="200px">
+      			<c:out value="${myentity.name}" escapeXml="true"/>
+    		</td>
+    		<td align="left" width="200px">
+    		
+      		<spring:url value="/web/myentity/${myentity.id}" var="delete_url" />
+    		<form:form  action="${fn:escapeXml(delete_url)}" method="DELETE" >
+      		
+          		<input dojoType="dijit.form.Button"  type="submit" value="submit" label="Delete"/>
+           	
+      	
+      		</form:form>
+    		</td>
+    		<td align="left" width="200px">
+      			<spring:url value="/web/myentity/${myentity.id}" var="update_url" />
+    			<form:form  action="${fn:escapeXml(update_url)}" method="GET" >
+      		
+          		<input dojoType="dijit.form.Button"  type="submit" value="submit" label="Update"/>
+           	
+      	
+      		</form:form>
+    		</td>
+    	</tr>
+  		</c:forEach>
+    	
+    </tbody>
+	</table>	
+       
+      
+     
+</div> 

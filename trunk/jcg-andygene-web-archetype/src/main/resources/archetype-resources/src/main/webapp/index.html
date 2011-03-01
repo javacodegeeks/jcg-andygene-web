@@ -1,0 +1,16 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<html>
+<head>
+<title>A web page that points a browser to a different page after 1 seconds</title>
+<meta http-equiv="refresh" content="1; URL=http://${tomcathost}/${artifactId}/web/login">
+<meta name="keywords" content="automatic redirection">
+</head>
+<body>
+If your browser doesn't automatically go there within a few seconds, 
+you may want to go to 
+<a href="http://${tomcathost}/${artifactId}/web/login">http://${tomcathost}/${artifactId}/web/login</a> 
+manually.
+</body>
+</html>

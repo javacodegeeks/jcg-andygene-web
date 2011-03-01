@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="jcg-andygene-web"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <fileSets>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/main/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/main/webapp</directory>
+      <includes>
+        <include>**/*.xml</include>
+        <include>**/*.html</include>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>**/*.xml</include>
+        <include>**/*.properties</include>
+	<include>**/*.drl</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>src/main/webapp</directory>
+      <includes>
+        <include>**/*.jspx</include>
+        <include>**/*.jrxml</include>
+        <include>**/*.MF</include>
+        <include>**/*.png</include>
+        <include>**/*.jasper</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>src/main/resources</directory>
+      <includes>
+        <include>**/*.drl</include>
+        <include>**/*.xsd</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>src/test/java</directory>
+      <includes>
+        <include>**/*.java</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/resources</directory>
+      <includes>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.settings</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>.settings</directory>
+      <includes>
+        <include>**/*.prefs</include>
+        <include>**/*.component</include>
+        <include>**/*.container</include>
+        <include>**/*.jsdtscope</include>
+        <include>**/*.name</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>.project</include>
+        <include>.classpath</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>.springBeans</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <requiredProperties>
+  	<requiredProperty key="tomcathost"><defaultValue>localhost:8080</defaultValue></requiredProperty>
+  	<requiredProperty key="db"><defaultValue>h2</defaultValue></requiredProperty>
+  	<requiredProperty key="activitiusername"><defaultValue>sa</defaultValue></requiredProperty>
+  	<requiredProperty key="activitipassword"><defaultValue></defaultValue></requiredProperty>
+  	<requiredProperty key="activitiurl"><defaultValue>jdbc\:h2\:mem/activiti</defaultValue></requiredProperty>
+  	<requiredProperty key="databaseusername"><defaultValue>sa</defaultValue></requiredProperty>
+  	<requiredProperty key="databasepassword"><defaultValue></defaultValue></requiredProperty>
+  	<requiredProperty key="databaseurl"><defaultValue>jdbc\:h2\:mem/andygene</defaultValue></requiredProperty>
+  	<requiredProperty key="activemqpersistencedir"><defaultValue>~/activemq</defaultValue></requiredProperty>
+  	<requiredProperty key="activemqpersistencesize"><defaultValue>32mb</defaultValue></requiredProperty>
+  	<requiredProperty key="activemqsessioncachesize"><defaultValue>100</defaultValue></requiredProperty>
+  </requiredProperties>
+</archetype-descriptor>

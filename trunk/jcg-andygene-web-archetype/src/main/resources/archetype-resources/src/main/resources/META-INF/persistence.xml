@@ -1,0 +1,44 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+<persistence-unit name="myUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+        	#if( $db == "h2" )
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            #elseif( $db == "mysql" )
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/-->
+            #elseif( $db == "postgres")
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/-->
+            #else
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/-->
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/-->
+            #end
+            <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+            <property name="hibernate.connection.charSet" value="UTF-8"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.cache.region.factory_class" value="net.sf.ehcache.hibernate.EhCacheRegionFactory"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/> 
+            <!-- Uncomment the following two properties for JBoss only -->
+            <!-- property name="hibernate.validator.apply_to_ddl" value="false" /-->
+            <!-- property name="hibernate.validator.autoregister_listeners" value="false" /-->
+        </properties>
+    </persistence-unit>
+</persistence>

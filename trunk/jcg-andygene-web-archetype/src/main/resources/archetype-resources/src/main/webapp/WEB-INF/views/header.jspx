@@ -1,0 +1,18 @@
+<div id="header" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags" version="2.0" dojoType="dijit.layout.ContentPane" region="top" splitter="false" >
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:url value="/web/static/images/logo.png" var="img_url" />
+  <table width="100%"><tr><td align="left"><img src="${fn:escapeXml(img_url)}" alt="JAVA CODE GEEKS"/></td>
+  <sec:authentication property="principal.username" var="username"/>
+  <spring:url value="/web/resources/j_spring_security_logout" var="form_url" /> 
+  <c:if test="${not empty username}">
+	<td align="right">
+    		Welcome <c:out value="${username}"></c:out>! <a href="${fn:escapeXml(form_url)}">logout</a>
+    		</td>
+    	</c:if>
+  
+  </tr></table>
+	
+       
+     
+</div> 

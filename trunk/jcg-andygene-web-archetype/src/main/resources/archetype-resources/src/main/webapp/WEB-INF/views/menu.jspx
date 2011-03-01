@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+<div dojoType="dijit.layout.AccordionContainer" minSize="20"
+	style="width: 300px;" region="leading" splitter="true" xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions"  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" id="menu" version="2.0">
+	<jsp:directive.page
+	contentType="text/html;charset=UTF-8" /> <jsp:output
+	omit-xml-declaration="yes" />
+	
+
+	<div dojoType="dijit.layout.AccordionPane" title="Entities" id="entitiesPanel" selected="${entitiesSelected}" >
+		<spring:url value="/web/myentity?form" var="form_url" />
+		<a href="${fn:escapeXml(form_url)}">Create MyEntity</a>
+		<br/>	
+		<spring:url value="/web/myentity?list" var="list_url" />
+		<a href="${fn:escapeXml(list_url)}">List MyEntity</a>
+	</div>
+	<div dojoType="dijit.layout.AccordionPane" title="Reports" id="reportsPanel" selected="${reportsSelected}">
+		<spring:url value="/web/reports?form" var="reports_url" />
+		<a href="${fn:escapeXml(reports_url)}">Init Reports</a>
+		<br/>	
+		<spring:url value="/web/reports?generate" var="reports_generate_url" />
+		<a href="${fn:escapeXml(reports_generate_url)}">Generate Reports</a>
+	</div>
+	<div dojoType="dijit.layout.AccordionPane" title="DROOLS" id="droolsPanel" selected="${droolsSelected}" >
+		<spring:url value="/web/drools?form" var="drools_url" />
+		<a href="${fn:escapeXml(drools_url)}">Execute Drools</a>
+		
+	</div>
+	<div dojoType="dijit.layout.AccordionPane" title="ACTIVITI" id="activitiPanel" selected="${activitiSelected}">
+		<spring:url value="/web/activiti?form" var="activiti_url" />
+		<a href="${fn:escapeXml(activiti_url)}">Execute Activiti</a>
+		
+	</div>
+	<div dojoType="dijit.layout.AccordionPane" title="ACTIVEMQ" id="jmsPanel" selected="${jmsSelected}">
+		<spring:url value="/web/jms?form" var="jms_url" />
+		<a  href="${fn:escapeXml(jms_url)}">Test JMS</a>
+	</div>
+</div>
