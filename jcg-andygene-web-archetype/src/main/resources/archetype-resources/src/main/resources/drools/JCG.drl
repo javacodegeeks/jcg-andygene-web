@@ -1,0 +1,19 @@
+package ${package}.drools.drl;
+
+import ${package}.drools.MyDomain;
+
+rule "Java Code Geeks"
+	when
+		m : MyDomain( name == "jcg" && lastName == "jcg" )
+	then
+		 
+		m.setDescription("Welcome to Java Code Geeks");
+		
+end
+
+rule "Default rule"
+	when
+		m : MyDomain( name != "jcg" || lastName != "jcg" )
+	then
+		m.setDescription("set name=[jcg] and lastName =[jcg] to become a geek!!!");
+end

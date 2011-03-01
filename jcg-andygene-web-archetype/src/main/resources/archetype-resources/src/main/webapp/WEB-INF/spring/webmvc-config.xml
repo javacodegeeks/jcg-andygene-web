@@ -1,0 +1,66 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+				
+	
+	<context:component-scan base-package="${package}" use-default-filters="false">
+		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+	</context:component-scan>
+	
+	
+	<mvc:annotation-driven conversion-service="applicationConversionService"/>
+	
+	
+	<mvc:resources location="/, classpath:/META-INF/web-resources/" mapping="/static/**"/>
+	
+	
+	<mvc:default-servlet-handler/>
+	
+	
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/>
+	</mvc:interceptors>
+	
+	
+
+    <mvc:view-controller path="/login" />
+	<mvc:view-controller path="/" view-name="index"/>
+
+	
+	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource" p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application" p:fallbackToSystemLocale="false"/>
+	
+	<!-- store preferred language configuration in a cookie -->
+	<bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver" id="localeResolver" p:cookieName="locale"/>	
+	
+	<!-- resolves localized <theme_name>.properties files in the classpath to allow for theme support -->
+	<bean class="org.springframework.ui.context.support.ResourceBundleThemeSource" id="themeSource"/>
+	
+	<!-- store preferred theme configuration in a cookie -->
+	<bean class="org.springframework.web.servlet.theme.CookieThemeResolver" id="themeResolver" p:cookieName="theme" p:defaultThemeName="standard"/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+       <property name="basename" value="views"/>
+    </bean>
+	
+
+
+	<!-- allows for integration of file upload functionality -->
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
+
+	<!--Installs application converters and formatters-->
+	<bean class="${package}.web.ApplicationConversionServiceFactoryBean" id="applicationConversionService"/>
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+  </bean>
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
+    <property name="definitions">
+      <list>
+        <value>/WEB-INF/views/**/views.xml</value>
+         <value>/WEB-INF/layouts/layouts.xml</value>
+      </list>
+    </property>
+  </bean>
+</beans>
