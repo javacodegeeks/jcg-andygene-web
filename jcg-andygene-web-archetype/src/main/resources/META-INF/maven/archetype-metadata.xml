@@ -88,12 +88,12 @@
   	<requiredProperty key="tomcathost"><defaultValue>localhost:8080</defaultValue></requiredProperty>
   	<requiredProperty key="db"><defaultValue>h2</defaultValue></requiredProperty>
   	<requiredProperty key="activitiusername"><defaultValue>sa</defaultValue></requiredProperty>
-  	<requiredProperty key="activitipassword"><defaultValue></defaultValue></requiredProperty>
+  	<requiredProperty key="activitipassword"><defaultValue>password</defaultValue></requiredProperty>
   	<requiredProperty key="activitiurl"><defaultValue>jdbc\:h2\:mem/activiti</defaultValue></requiredProperty>
   	<requiredProperty key="databaseusername"><defaultValue>sa</defaultValue></requiredProperty>
-  	<requiredProperty key="databasepassword"><defaultValue></defaultValue></requiredProperty>
+  	<requiredProperty key="databasepassword"><defaultValue>password</defaultValue></requiredProperty>
   	<requiredProperty key="databaseurl"><defaultValue>jdbc\:h2\:mem/andygene</defaultValue></requiredProperty>
-  	<requiredProperty key="activemqpersistencedir"><defaultValue>~/activemq</defaultValue></requiredProperty>
+  	<requiredProperty key="activemqpersistencedir"><defaultValue>activemq</defaultValue></requiredProperty>
   	<requiredProperty key="activemqpersistencesize"><defaultValue>32mb</defaultValue></requiredProperty>
   	<requiredProperty key="activemqsessioncachesize"><defaultValue>100</defaultValue></requiredProperty>
   </requiredProperties>
